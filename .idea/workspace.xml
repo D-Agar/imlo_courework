@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8665bc35-aa7e-4003-a456-85bacee6d43a" name="Changes" comment="Gitignore" />
+    <list default="true" id="8665bc35-aa7e-4003-a456-85bacee6d43a" name="Changes" comment="New model iteration, higher accuracy">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,20 +46,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/danie/Documents/University Work/CSUGY2/IMLO/imlo_courework",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/danie/Documents/University Work/CSUGY2/IMLO/imlo_courework&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\danie\Documents\University Work\CSUGY2\IMLO\imlo_courework" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -86,7 +93,15 @@
       <workItem from="1714633780140" duration="12304000" />
       <workItem from="1714658321664" duration="4128000" />
       <workItem from="1714664705621" duration="990000" />
-      <workItem from="1714721125840" duration="3205000" />
+      <workItem from="1714721125840" duration="14042000" />
+      <workItem from="1714811323791" duration="10894000" />
+      <workItem from="1714857470827" duration="6206000" />
+      <workItem from="1714896008231" duration="41568000" />
+      <workItem from="1715018310051" duration="14100000" />
+      <workItem from="1715075170854" duration="1693000" />
+      <workItem from="1715090520883" duration="4011000" />
+      <workItem from="1715097424569" duration="3384000" />
+      <workItem from="1715102206467" duration="10130000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -160,7 +175,47 @@
       <option name="project" value="LOCAL" />
       <updated>1714723781266</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Gitignore">
+      <option name="closed" value="true" />
+      <created>1714724557130</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714724557130</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Gitignore">
+      <option name="closed" value="true" />
+      <created>1714724569629</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714724569629</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Explored image normalisation and added new, slightly deeper model to test">
+      <option name="closed" value="true" />
+      <created>1714863727210</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1714863727210</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added more model iterations, with slightly better performance">
+      <option name="closed" value="true" />
+      <created>1715121307736</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715121307736</updated>
+    </task>
+    <task id="LOCAL-00014" summary="New model iteration, higher accuracy">
+      <option name="closed" value="true" />
+      <created>1715155074616</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715155074616</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +241,9 @@
     <MESSAGE value="Alter Architecture" />
     <MESSAGE value="Working starter model" />
     <MESSAGE value="Gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gitignore" />
+    <MESSAGE value="Explored image normalisation and added new, slightly deeper model to test" />
+    <MESSAGE value="Added more model iterations, with slightly better performance" />
+    <MESSAGE value="New model iteration, higher accuracy" />
+    <option name="LAST_COMMIT_MESSAGE" value="New model iteration, higher accuracy" />
   </component>
 </project>
