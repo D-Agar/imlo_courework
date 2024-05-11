@@ -1,9 +1,4 @@
-.idea
-/flowers102/*
-/flowers102
-/flowers102/train/flowers-102/jpg
-/flowers102/train/flowers-102
-/flowers102/train
+/flowers-102/
 /models/
-.idea/workspace.xml
-/.idea
+/.idea/
+/figures/
