@@ -155,7 +155,7 @@ model.to(device)
 
 criterion = nn.CrossEntropyLoss()
 optimiser = optim.Adam(model.parameters(), lr=lr)
-lr_scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimiser, patience=10)
+lr_scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimiser, patience=patience)
 
 # Dataloaders
 train_loader = DataLoader(train_dataset, batch_size, shuffle=True)
@@ -206,6 +206,7 @@ def test_loop(dataloader, model, loss_fn):
     return test_loss, correct
 
 ## MODEL LOOP ##
+
 train_losses = []
 train_accuracies = []
 val_losses = []
@@ -264,6 +265,7 @@ axs[1].legend()
 plt.savefig(f"{path}_stats")
 
 ### TESTING ###
+
 test_loader = DataLoader(test_dataset, batch_size)
 
 def test(model, test_loader):
