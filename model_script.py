@@ -6,21 +6,19 @@ import torch
 from torch import nn, optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
-import numpy as np
 from torchvision.transforms import v2, Lambda
 import torchvision
 from torch.nn import functional as F
-from scipy import io as sio
 
 ### TEST INFORMATION ###
 
-epochs = 500
+epochs = 1
 batch_size = 32
 lr = 0.0001
 patience = 10
-path = 'model1e_500_32_0001.pth'
+path = 'model1e_500_32_0001'
 
-print("Model: 1e, Epochs: 500, Batch size: 32, Optimiser: Adam, lr=0.0001")
+print("Model: 1e, Epochs: 1, Batch size: 32, Optimiser: Adam, lr=0.0001")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Using device: {device}")
@@ -39,6 +37,7 @@ train_transform = transforms.Compose([
     # v2.Resize((100, 100)),
     v2.RandomHorizontalFlip(p=0.5),
     v2.RandomVerticalFlip(p=0.2),
+    v2.RandomErasing(0.4),
     # v2.ColorJitter(brightness=0.25, contrast=0.25, saturation=0.25, hue=0.2),
     v2.RandomRotation(20),
     v2.ToDtype(torch.float32, scale=True),
@@ -49,7 +48,7 @@ train_transform = transforms.Compose([
 
 valid_transform = transforms.Compose([
     v2.ToImage(),
-    v2.Resize(img_size),
+    v2.Resize(img_size, antialias=True),
     v2.ToDtype(torch.float32, scale=True),
     v2.Normalize(mean=[0.433, 0.382, 0.296], std=[0.259, 0.209, 0.221])
     # v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
@@ -57,7 +56,7 @@ valid_transform = transforms.Compose([
 
 test_transform = transforms.Compose([
     v2.ToImage(),
-    v2.Resize(img_size),
+    v2.Resize(img_size, antialias=True),
     v2.ToDtype(torch.float32, scale=True),
     v2.Normalize(mean=[0.433, 0.382, 0.296], std=[0.259, 0.209, 0.221])
     # transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
@@ -158,8 +157,8 @@ optimiser = optim.Adam(model.parameters(), lr=lr)
 lr_scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimiser, patience=patience)
 
 # Dataloaders
-train_loader = DataLoader(train_dataset, batch_size, shuffle=True)
-valid_loader = DataLoader(valid_dataset, batch_size, num_workers=0, generator=torch.Generator(device=device))
+train_loader = DataLoader(train_dataset, batch_size, shuffle=True, generator=torch.Generator(device=device))
+valid_loader = DataLoader(valid_dataset, batch_size, generator=torch.Generator(device=device))
 
 def train_loop(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
@@ -214,7 +213,7 @@ val_accuracies = []
 best_acc = 0.
 best_loss = 100
 early_stop_counter = 0
-for e in range(epochs):
+for e in range(0, epochs):
     print(f"Epoch [{e+1}/{epochs}]")
     train_loss, train_acc = train_loop(train_loader, model, criterion, optimiser)
     val_loss, val_acc = test_loop(valid_loader, model, criterion)
@@ -228,7 +227,7 @@ for e in range(epochs):
 
     if val_acc > best_acc:
         best_acc = val_acc
-        torch.save(model.state_dict(), path)
+        torch.save(model.state_dict(), f"{path}.pth")
         best_loss = val_loss
         early_stop_counter = 0
     # Early Stopping
@@ -240,33 +239,31 @@ for e in range(epochs):
 
 # Check to compare the last two losses (if more than 5% difference, save end model)
 if (val_acc - best_acc) >= 0.05:
-    torch.save(model.state_dict(), path)
+    torch.save(model.state_dict(), f"{path}.pth")
     
 ### VISUALISATION ###
 
-fig, axs = plt.subplots(1, 2)
+fig, (axLoss, axAcc) = plt.subplots(nrows=1, ncols=2)
 
 # Visualise the losses
-axs[0].set_title("Loss")
-axs[0].plot(train_losses, label='Training')
-axs[0].plot(val_losses, label='Validation')
-axs[0].xlabel('Epochs')
-axs[0].ylabel('Loss')
-axs[0].legend()
+axLoss.set_title("Loss")
+axLoss.plot(train_losses, label='Training')
+axLoss.plot(val_losses, label='Validation')
+axLoss.set(xlabel='Epoch', ylabel='Loss')
+axLoss.legend()
 
 # Visualise the losses
-axs[1].set_title("Accuracy (Represented as a decimal)")
-axs[1].plot(train_losses, label='Training')
-axs[1].plot(val_losses, label='Validation')
-axs[1].xlabel('Epochs')
-axs[1].ylabel('Accuracy')
-axs[1].legend()
+axAcc.set_title("Accuracy (Represented as a decimal)")
+axAcc.plot(train_losses, label='Training')
+axAcc.plot(val_losses, label='Validation')
+axAcc.set(xlabel='Epoch', ylabel='Accuracy')
+axAcc.legend()
 
 plt.savefig(f"{path}_stats")
 
 ### TESTING ###
 
-test_loader = DataLoader(test_dataset, batch_size)
+test_loader = DataLoader(test_dataset, batch_size, generator=torch.Generator(device=device))
 
 def test(model, test_loader):
     model.eval()
@@ -284,7 +281,7 @@ def test(model, test_loader):
     return acc/len(test_loader.dataset)
 
 test_model = MyNN().to(device)
-test_model.load_state_dict(torch.load(path))
+test_model.load_state_dict(torch.load(f"{path}.pth"))
 test_acc = test(test_model, test_loader)
 
 print(f"Test Accuracy: {test_acc*100:.2f}%")
