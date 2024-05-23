@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8665bc35-aa7e-4003-a456-85bacee6d43a" name="Changes" comment="New model iteration, higher accuracy">
+    <list default="true" id="8665bc35-aa7e-4003-a456-85bacee6d43a" name="Changes" comment="More attempts with different models">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coursework.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/coursework.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/datasets.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,19 +52,23 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/danie/Documents/University Work/CSUGY2/IMLO/imlo_courework&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/danie/Documents/University Work/CSUGY2/IMLO/imlo_courework/figures&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;database.data.views.appearance&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\danie\Documents\University Work\CSUGY2\IMLO\imlo_courework" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\danie\Documents\University Work\CSUGY2\IMLO\imlo_courework\models" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -101,7 +107,17 @@
       <workItem from="1715075170854" duration="1693000" />
       <workItem from="1715090520883" duration="4011000" />
       <workItem from="1715097424569" duration="3384000" />
-      <workItem from="1715102206467" duration="10130000" />
+      <workItem from="1715102206467" duration="14255000" />
+      <workItem from="1715166309191" duration="652000" />
+      <workItem from="1715167599993" duration="203000" />
+      <workItem from="1715203590661" duration="1214000" />
+      <workItem from="1715204852186" duration="29400000" />
+      <workItem from="1715269978105" duration="3805000" />
+      <workItem from="1715289301563" duration="22204000" />
+      <workItem from="1715346204414" duration="2244000" />
+      <workItem from="1715383336084" duration="14288000" />
+      <workItem from="1715424644191" duration="9429000" />
+      <workItem from="1715436876243" duration="530000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -215,7 +231,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715155074616</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Gitignore">
+      <option name="closed" value="true" />
+      <created>1715155178076</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715155178076</updated>
+    </task>
+    <task id="LOCAL-00016" summary="More attempts with different models">
+      <option name="closed" value="true" />
+      <created>1715433619600</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715433619600</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,10 +272,11 @@
     <MESSAGE value="Created first model of my architecture" />
     <MESSAGE value="Alter Architecture" />
     <MESSAGE value="Working starter model" />
-    <MESSAGE value="Gitignore" />
     <MESSAGE value="Explored image normalisation and added new, slightly deeper model to test" />
     <MESSAGE value="Added more model iterations, with slightly better performance" />
     <MESSAGE value="New model iteration, higher accuracy" />
-    <option name="LAST_COMMIT_MESSAGE" value="New model iteration, higher accuracy" />
+    <MESSAGE value="Gitignore" />
+    <MESSAGE value="More attempts with different models" />
+    <option name="LAST_COMMIT_MESSAGE" value="More attempts with different models" />
   </component>
 </project>
