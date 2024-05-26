@@ -12,7 +12,7 @@ from torch.nn import functional as F
 
 ### TEST INFORMATION ###
 
-epochs = 500
+epochs = 300
 batch_size = 64
 lr = 0.0001
 patience = 10
