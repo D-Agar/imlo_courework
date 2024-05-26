@@ -6,18 +6,16 @@ import torch
 from torch import nn, optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
-from torchvision.transforms import v2, Lambda
-import torchvision
-from torch.nn import functional as F
+from torchvision.transforms import v2
 
 ### TEST INFORMATION ###
 
 epochs = 500
-batch_size = 64
+batch_size = 32
 lr = 0.0001
 patience = 10
 path = 'imlo_model'
-description = "My final model for the IMLO Individual Project Assessment"
+description = "My model designed for the IMLO Individual Project Assessment"
 
 print(f"Model: {path}, Epochs: {epochs}, Batch size: {batch_size}, Optimiser: Adam, lr={lr}")
 print(description)
@@ -139,12 +137,11 @@ class MyNN(nn.Module):
         self.fc1 = nn.Sequential(
             nn.Dropout(0.5),
             nn.Linear(512*7*7, 2048),
-            nn.ReLU()
+            nn.ReLU(),
         )
         self.fc2 = nn.Sequential(
             nn.Dropout(0.5),
-            nn.Linear(2048, 512),
-            nn.ReLU()
+            nn.Linear(2048, 512)
         )
         self.classifier = nn.Linear(512, 102)
 
@@ -161,7 +158,6 @@ class MyNN(nn.Module):
         x = self.classifier(x)
         return x
 
-# Choosing model
 model = MyNN()
 model.to(device)
 print(model)
@@ -169,7 +165,7 @@ print(model)
 ### TRAINING ###
 
 criterion = nn.CrossEntropyLoss()
-optimiser = optim.Adam(model.parameters(), lr=lr)
+optimiser = optim.Adam(model.parameters(), lr=lr, weight_decay=1e-5)
 
 # Dataloaders
 train_loader = DataLoader(train_dataset, batch_size, shuffle=True, generator=torch.Generator(device=device))
@@ -223,13 +219,14 @@ def test_loop(dataloader, model, loss_fn):
 print("[INFO] Training starting...")
 start_time = time.time()
 
+
 train_losses = []
 train_accuracies = []
 val_losses = []
 val_accuracies = []
 best_acc = 0.
 best_loss = 100
-early_stop_counter = 0
+
 for e in range(0, epochs):
     print(f"Epoch [{e+1}/{epochs}]")
     train_loss, train_acc = train_loop(train_loader, model, criterion, optimiser)
@@ -244,12 +241,12 @@ for e in range(0, epochs):
         best_acc = val_acc
         torch.save(model.state_dict(), f"{path}.pth")
         best_loss = val_loss
-        early_stop_counter = 0
+
 
 # Check to compare the last two losses (if more than 5% difference, save end model)
 if (val_acc - best_acc) >= 0.05:
     torch.save(model.state_dict(), f"{path}.pth")
-    
+
 finish_time = time.time()
 print("[INFO] Training completed")
 print(f"Elapsed time: {math.floor((finish_time-start_time)/60)}min, {math.floor((finish_time-start_time)%60)}s")
